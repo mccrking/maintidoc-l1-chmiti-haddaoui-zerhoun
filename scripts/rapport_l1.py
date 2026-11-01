@@ -46,7 +46,7 @@ TICKET='''sequenceDiagram
 class Architecture(Flowable):
  def __init__(self,width):super().__init__();self.width=width;self.height=360
  def draw(self):
-  c=self.canv;w=self.width;navy=colors.HexColor('#19354A');teal=colors.HexColor('#087F8C');pale=colors.HexColor('#EDF5F6')
+  c=self.canv;w=self.width;navy=colors.black;teal=colors.black;pale=colors.white
   def box(x,y,ww,hh,t,sub):
    c.setFillColor(pale);c.setStrokeColor(teal);c.roundRect(x,y,ww,hh,4,fill=1,stroke=1)
    c.setFillColor(navy);c.setFont('AB',10);c.drawCentredString(x+ww/2,y+hh-17,t)
@@ -68,15 +68,17 @@ class Architecture(Flowable):
   for x in [small/2,w/2,w-small/2]:arrow(mid,175,x,135)
   box(0,4,w,47,'Stockage : documents, index et métadonnées','Versions, équipements, groupes ; journaux sans secrets')
   arrow(w/2,82,w/2,51)
-  c.setFont('AI',7.4);c.setFillColor(navy)
+  c.setFont('A',7.4);c.setFillColor(navy)
   c.drawString(0,65,'Action ticket : approbation humaine + droits revérifiés côté MCP + clé d’idempotence.')
 
 def report_pages(P,H,T,D,W,C):
+ from style_rapport_l1 import appliquer_style,table_pour_rapport
+ appliquer_style(P.__globals__)
+ T=table_pour_rapport(T)
  pages=[]
  def page(title,*objects):pages.append([P(title,'title'),*objects])
  page('1. Cadrage du projet',
   P('MaintiDoc - Parc informatique pédagogique','h'),
-  P('Livrable 1 sur 6 | Module IA générative multimodale - EMSI 2026 | 1 novembre 2026','small'),
   P('Équipe : Mehdi Chmiti, Ismail Haddaoui et Ayman Zerhoun. Nom normalisé : CHMITI-HADDAOUI-ZERHOUN. Enseignante : Pr. Mariam CHERRABI. Ce dossier prépare les décisions de la semaine 1 ; le prototype complet reste à construire.'),
   H('Contexte et utilisateurs'),
   P('Un technicien doit retrouver rapidement une procédure adaptée à un poste ou à un périphérique, comprendre un message affiché et préparer un ticket sans recopier des secrets. Un responsable de maintenance doit contrôler les versions, les droits et les propositions d’action. Le terrain choisi est un parc pédagogique fictif : aucune intervention réelle ni donnée d’utilisateur n’est présentée.'),

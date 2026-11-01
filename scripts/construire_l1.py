@@ -46,6 +46,8 @@ def table(headers,rows,widths=None):
  return t
 def decorate(docid,total,section='CORPUS SYNTHÉTIQUE - MAINTIDOC'):
  def draw(c,doc):
+  if section.startswith('LIVRABLE 1'):
+   c.saveState();c.setFillColor(colors.black);c.setFont('A',8);c.drawRightString(W-48,32,f'{doc.page} / {total}');c.restoreState();return
   c.saveState();c.setFillColor(TEAL);c.rect(0,H-7,W,7,fill=1,stroke=0)
   c.setFont('AB',8);c.setFillColor(NAVY);c.drawString(48,H-31,docid)
   c.setFont('A',8);c.setFillColor(GRAY);c.drawRightString(W-48,H-31,section)
