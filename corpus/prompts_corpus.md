@@ -1,7 +1,5 @@
 # Prompts du corpus MaintiDoc
 
-Outil utilisé : ChatGPT / Codex.
-
 Domaine : maintenance des postes informatiques et des périphériques informatiques.
 
 Ce journal distingue les demandes exactes de l’utilisateur des consignes reformulées. Les dates exactes de P01 à P03 ne sont pas consignées. La création des compléments du L1 date du 1er novembre 2026.
