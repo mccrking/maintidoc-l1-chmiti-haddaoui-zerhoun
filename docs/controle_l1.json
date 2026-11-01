@@ -21,7 +21,8 @@
   },
   "human_validated": 0,
   "blockers": [
-    "Relecture humaine et droits à valider pour 36 documents ; verifie_par non renseigné"
+    "Relecture humaine et droits à valider pour 36 documents ; verifie_par non renseigné",
+    "prompts_corpus.md est vide ; traçabilité des prompts à compléter"
   ],
   "sha256": {
     "it01": "59b1e3088ab2e0198dbabc984db5a24d70422b6780670af739f5968d1806bf27",

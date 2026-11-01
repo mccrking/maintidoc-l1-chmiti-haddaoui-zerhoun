@@ -202,17 +202,17 @@ report=OUT/(NAME+'_Rapport.pdf')
 pages=report_pages(P,head,table,Diagram,WIDTH,COUNTS)
 assert len(pages)==14
 build_pdf(report,NAME,pages,report=True)
-(OUT/(NAME+'_LienGitHub.txt')).write_text('DÉPÔT GITHUB NON CRÉÉ - URL À FOURNIR AVANT REMISE\n',encoding='utf-8')
+(OUT/(NAME+'_LienGitHub.txt')).write_bytes(('https://github.com/mccrking/maintidoc-l1-chmiti-haddaoui-zerhoun'+'\n').encode('utf-8'))
 README='# MaintiDoc\n\nProjet du module IA générative multimodale - EMSI 2026.\n\n## Équipe\n\n- Mehdi Chmiti\n- Ismail Haddaoui\n- Ayman Zerhoun\n\n## Objectif\n\nAider les techniciens à retrouver une procédure, comprendre un problème et préparer un ticket à partir de documents et d’images. Les réponses doivent citer leurs sources et la création d’un ticket nécessite l’accord du technicien.\n\nDeux familles sont étudiées : les postes Windows et les périphériques informatiques.\n\n## Livrable 1\n\n- `L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN_Rapport.pdf` : cadrage, architecture, flux de données, risques et planning, en 15 pages, dont une page de garde.\n- `L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN_LienGitHub.txt` : lien du dépôt.\n- `README.md` : présentation du projet.\n- `L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN_Corpus/` : documents, inventaire et prompts utilisés.\n\nLe corpus comprend 36 documents : procédures, manuels, codes locaux et fiche de sécurité. Il contient aussi deux scans synthétiques pour l’OCR, deux versions contradictoires et un document piégé pour les tests.\n\n## Organisation du dépôt\n\n```text\nmaintidoc/\n├── README.md\n├── .gitignore\n├── corpus/\n│   ├── inventaire.csv\n│   ├── prompts_corpus.md\n│   ├── sources_travail.csv\n│   ├── documents/\n│   │   ├── famille_1/\n│   │   └── famille_2/\n│   └── images/\n├── docs/\n│   ├── diagrammes/\n│   └── L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN_Rapport.pdf\n└── scripts/\n```\n\nL’inventaire décrit chaque document, sa provenance, sa version et ses groupes d’accès. Le suivi des relectures se trouve dans `corpus/STATUT_VALIDATION.md` et dans la colonne `verifie_par` de l’inventaire.\n\nDépôt : https://github.com/mccrking/maintidoc-l1-chmiti-haddaoui-zerhoun\n'
 (OUT/'README.md').write_text(README,encoding='utf-8')
 (REPO/'README.md').write_text(README,encoding='utf-8')
-(REPO/'.gitignore').write_text('.env\n.env.*\n!.env.example\n*.pem\n*.key\n__pycache__/\n.venv/\n*.log\n.DS_Store\n',encoding='utf-8')
+(REPO/'.gitignore').write_text('.env\n.env.*\n!.env.example\n*.pem\n*.key\n__pycache__/\n.venv/\n*.log\n.DS_Store\nbuild/\n',encoding='utf-8')
 for n,s in [('architecture',ARCHITECTURE),('ingestion',INGESTION),('ticket',TICKET)]:
  folder=REPO/'docs/diagrammes';folder.mkdir(parents=True,exist_ok=True);(folder/(n+'.mmd')).write_text(s,encoding='utf-8')
 shutil.copytree(CORPUS,REPO/'corpus',dirs_exist_ok=True)
 (REPO/'docs').mkdir(exist_ok=True)
 shutil.copy2(report,REPO/'docs'/report.name)
-shutil.copy2(ROOT/'docs/verification_docker_v22.json',REPO/'docs/verification_docker_v22.json')
+# La preuve Docker V2.2 est déjà versionnée dans docs/.
 
 # Rendus visuels de toutes les pages, y compris les deux scans synthétiques.
 all_files=[(d['document_id'],CORPUS/d['fichier']) for d in DOCS]+[('rapport',report)]
@@ -230,7 +230,7 @@ for batch in range((len(rendered)+5)//6):
   im=Image.open(path);im.thumbnail((480,700));x=(j%3)*500+10;y=(j//3)*755+30;sheet.paste(im,(x,y));draw.text((x,y-20),docid+' / '+str(pn),fill='black')
  sheet.save(QA/f'planche_{batch+1:02}.png')
 
-summary=dict(documents=len(DOCS),pages_corpus=108,pages_rapport=15,**COUNTS,documents_visuels=sum(d['elements_visuels']!='aucun' for d in DOCS),validation_humaine='en attente pour 36 documents',github='non créé',scans='deux PDF synthétiques rasterisés ; OCR non exécuté',prompt_history='partiel pour les anciennes versions ; nouvelles instructions enregistrées',page_renders=len(rendered))
+summary=dict(documents=len(DOCS),pages_corpus=108,pages_rapport=15,**COUNTS,documents_visuels=sum(d['elements_visuels']!='aucun' for d in DOCS),validation_humaine='en attente pour 36 documents',github='public; URL renseignee',scans='deux PDF synthétiques rasterisés ; OCR non exécuté',prompt_history='fichier vide; a completer',page_renders=len(rendered))
 (QA/'verification_generation.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
 archive=ROOT/'build'/(NAME+'.zip')
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
