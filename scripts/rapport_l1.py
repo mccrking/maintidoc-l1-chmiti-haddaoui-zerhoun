@@ -248,7 +248,5 @@ def report_pages(P,H,T,D,W,C):
    ('Prompts','Confirmer la trace disponible ; conserver la limite historique au lieu d’inventer des instructions'),
    ('GitHub','Accès public vérifié ; contrôler à nouveau le lien au moment du dépôt'),
    ('Rapport et README','Confirmer les rôles et les ressources ; actualiser les paragraphes de statut après réalisation'),
-   ('ZIP final','Vérifier le nom L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN.zip et ses quatre éléments racine')],[110,W-110]),
-  H('Documents de référence'),
-  P('Consignes du livrable 1, Pr. Mariam CHERRABI, 29 octobre 2026, pages 1 à 7 : contenu, inventaire, architecture et nommage. Sources techniques des fiches : Microsoft et Mozilla, références dans les PDF et sources_travail.csv. Le rapport ne prétend ni à une maintenance industrielle réelle ni à un prototype RAG déjà évalué.','small'))
+   ('ZIP final','Vérifier le nom L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN.zip et ses quatre éléments racine')],[110,W-110]))
  return pages
