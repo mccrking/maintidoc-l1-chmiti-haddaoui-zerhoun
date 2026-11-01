@@ -3,7 +3,7 @@
   "ready_for_submission": false,
   "documents": 36,
   "pages_corpus": 108,
-  "pages_report": 14,
+  "pages_report": 15,
   "columns": 20,
   "families": {
     "postes_informatiques": 25,
@@ -61,5 +61,5 @@
     "proc_impression_v2": "a78b98f2702631cfae8d5871ebec90cba6632473f9a393cb9510892d9ddee4fe",
     "note_service_test": "ce1fb9a4243c08e980505763a49acccbaf57d3d2f5f96a24c014741a082c6bb5"
   },
-  "visual_review": "122 pages rendues et inspectées ; retouches éditoriales et schéma contrôlés séparément"
+  "visual_review": "123 pages rendues et inspectées ; retouches éditoriales et schéma contrôlés séparément"
 }

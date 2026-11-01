@@ -16,7 +16,7 @@ Deux familles sont étudiées : les postes Windows et les périphériques inform
 
 ## Livrable 1
 
-- `L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN_Rapport.pdf` : cadrage, architecture, flux de données, risques et planning, en 14 pages.
+- `L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN_Rapport.pdf` : cadrage, architecture, flux de données, risques et planning, en 15 pages, dont une page de garde.
 - `L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN_LienGitHub.txt` : lien du dépôt.
 - `README.md` : présentation du projet.
 - `L1_MaintiDoc_CHMITI-HADDAOUI-ZERHOUN_Corpus/` : documents, inventaire et prompts utilisés.
